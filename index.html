@@ -4,58 +4,132 @@
     <head>
         <title>DanielHonrales.github.io</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open Sans Condensed:300'>
+
+        <script type="text/javascript" src="scripts/scroll.js"></script>  
     </head>
 
     <style>
         body {
           font-family: "Open Sans", sans-serif;
         }
+        #home-text-desc{
+            font-family: "Open Sans Condensed";
+        }
+        #home-text-occu{
+            font-family: "Open Sans Condensed";
+        }
     </style>
 
     <body>
-        <div class="navbar">
-            <div class="navbar navbar-button" id="navbar-home">
-                Home
+        <div id="navbar">
+            <div class="navbar-section" id="navbar-home">
+                <button type="button" class="navbar-button" onClick="scrollHome()">Home</button>
             </div>
-            <div class="navbar navbar-button" id="navbar-about">
-                About
+            <div class="navbar-section" id="navbar-about">
+                <button type="button" class="navbar-button" onClick="scrollAbout()">About</button>
             </div>
-            <div class="navbar navbar-button" id="navbar-projects">
-                Projects
+            <div class="navbar-section" id="navbar-projects">
+                <button type="button" class="navbar-button" onClick="scrollProjects()">Projects</button>
             </div>
-            <div class="navbar navbar-button" id="navbar-contact">
-                Contact
+            <div class="navbar-section" id="navbar-resume">
+                <button type="button" class="navbar-button" onClick="scrollResume()">Resume</button>
+            </div>
+            <div class="navbar-section" id="navbar-contact">
+                <button type="button" class="navbar-button" onClick="scrollContact()">Contact</button>
             </div>
         </div>
         
+        <!--
         <div class="backdrop">
             <div class="backdrop-obj">
                 <img src="texas.jpg" id="backdrop-img" alt= "backdrop img">
             </div>
         </div>
+        -->
 
-        <div class="home">
+        <div class="home" id="home">
             <div class="home-obj">
-                <img src="mmbread.jpg" id="home-portrait" alt= "portrait">
+                <img src="images/mmbread.jpg" id="home-portrait" alt= "portrait">
             </div>
 
             <div class="home-obj" id="home-line"></div>
             
-            <div class="home-obj" id="home-text">
+            <div class="home-text">
                 <div class="home-obj" id="home-text-name">
                     <h1>Daniel Honrales</h1>
                 </div>
                 <div class="home-obj" id="home-text-desc">
                     <h2>Guy. Dude. Person.</h2>
-                </div class="home-obj">
+                </div>
                 <div class="home-obj" id="home-text-occu">
                     <h2>Undergrad at University of Texas at Dallas</h2>
-                </div class="home-obj">
+                </div>
             </div>
-
         </div>
 
+        <div class="about" id="about">
+            <div class="about-obj" id="about-text-title">
+                <img src="images/about.png" id="about-icon" alt= "about-icon">
+                <h2>About</h2>
+            </div>
+            <div class="about-obj" id="about-text-desc">
+                <p>Hi There! <br>
+                I'm an undergraduate student majoring in Computer Science at the University of Texas at Dallas. I expect to graduate in Spring 2023.</p>
+            </div>
+        </div>
+
+        <div class="projects" id="projects">
+            <div class="exp-obj" id="projects-text-title">
+                <img src="images/projects.png" id="projects-icon" alt= "projects-icon">
+                <h2>Projects</h2>
+            </div>
+            <div class="exp-obj" id="projects-text-desc">
+                
+
+            </div>
+        </div>
+        
+        <div class="resume" id="resume">
+            <div class="exp-obj" id="work-text-title">
+                <img src="images/work.png" id="work-icon" alt= "work-icon">
+                <h2>Work Experience</h2>
+            </div>
+            <div class="exp-obj" id="education-text-title">
+                <img src="images/education.png" id="education-icon" alt= "education-icon">
+                <h2>Education</h2>
+            </div>
+        </div>
+        
+        <div class ="contact" id="contact">
+            <div class="contact-obj" id="email">
+                <div class="email-obj" id="email-text-title">
+                    <h2>Contact me at...</h2>
+                </div>
+                <div class="email-obj" id="email-text-desc">
+                    <p> ‣ <a href="mailto:webmaster@example.com" class="email-link"> dhh190000@utdallas.edu </a> </p>
+                    <p> ‣ <a href="mailto:webmaster@example.com" class="email-link"> danielhonrales@gmail.com </a> </p>
+                    <p> ‣ 469 - 212 - 2559</p>
+                </div>
+            </div>
+            
+            <div class="contact-obj" id="contact-line-buffer">
+                <div class="contact-obj" id="contact-line"></div>
+            </div>
+            
+            <div class="contact-obj" id="media">
+                <div class="media-obj" id="media-text-title">
+                    <h1>Find me at...</h1>
+                </div>
+                <div class="media-obj" id="media-text-desc">
+                    <a href="https://www.linkedin.com/in/daniel-honrales-5966a11b7/"><img src="images/linkedin.png" id="linkedin-icon" alt= "linkedin-icon"></a>
+                    <div class="buffer-media"></div>
+                    <a href="https://github.com/danielhonrales"><img src="images/github.png" id="github-icon" alt= "github-icon"></a>
+                </div>
+            </div>
+        </div>
+        
         <div class="buffer">
         </div>
     </body>
