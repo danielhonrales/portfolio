@@ -57,7 +57,7 @@ function App() {
               <br/><br/>
 
               <Box sx={{display: 'flex'}}>
-                <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '2px', height: '410px', marginRight: '10px'}}/>
+                <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '2px', height: '410px', marginRight: '20px'}}/>
                 <Typography variant="h2">
                   I enjoy gaming all things Nintendo, <br/>
                   &emsp;&emsp;&emsp;&nbsp;reading strange case studies on the mind, <br/>
@@ -123,7 +123,7 @@ function App() {
                 <Typography variant="h2">469 - 212 - 2559</Typography>
               </Box>
 
-              <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '2px', height: '270px', marginLeft: '10px'}}/>
+              <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '2px', height: '270px', marginLeft: '20px'}}/>
             </Box>
           </Box>
 
