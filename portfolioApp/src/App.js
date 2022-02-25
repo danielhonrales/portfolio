@@ -25,13 +25,13 @@ const theme = createTheme({
       h1: {
           fontFamily: 'Open Sans',
           fontWeight: 300,
-          fontSize: '70px',
+          fontSize: '4rem',
           color: '#22223B'
       },
       h2: {
           fontFamily: 'Open Sans',
           fontWeight: 300,
-          fontSize: '30px',
+          fontSize: '1.8rem',
           color: '#4A4E69'
       },
       h4: {
@@ -49,36 +49,41 @@ function App() {
                   width: '100vw',
                   height: '100vh'}}>
 
-          <Box sx={{width: '40%', margin: 'auto', display: 'flex', flexDirection: 'column'}}>
+          <Box sx={{width: '35%', margin: 'auto 2% auto auto'}}>
             
-            <Container>
+            <Box sx={{width: '100%', height: '68%'}}>
               <Typography variant="h2">Hello, I'm<br/></Typography>
               <Typography variant="h1">&ensp;Daniel Honrales</Typography>
-              <br/><br/>
 
-              <Box sx={{display: 'flex'}}>
-                <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '2px', height: '410px', marginRight: '20px'}}/>
-                <Typography variant="h2">
-                  I enjoy gaming all things Nintendo, <br/>
-                  &emsp;&emsp;&emsp;&nbsp;reading strange case studies on the mind, <br/>
-                  &emsp;&emsp;&emsp;&nbsp;and overthinking code.<br/><br/>
-
-                  I study at the Unviersity of Texas at Dallas<br/>
-                  &emsp;&emsp;&emsp;&nbsp;as an undergraduate second-year<br/>
-                  &emsp;&emsp;&emsp;&nbsp;Computer Science major,<br/>
-                  &emsp;&emsp;&emsp;&nbsp;Cognitive Science minor.<br/><br/>
-
-                  I'm interested in internships or entry-level positions<br/>
-                  &emsp;&emsp;&emsp;&nbsp;for CS or IT related fields.
-                </Typography>
+              <Box sx={{width: '100%', display: 'flex', marginTop: '8%'}}>
+                <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '2px', height: 'inherit', marginRight: '3%'}}/>
+                <Box sx={{flexDirection: 'column'}}>
+                  <Typography variant="h2">
+                    I enjoy gaming all things Nintendo,
+                    reading strange case studies on the mind,
+                    and overthinking code.
+                  </Typography>
+                  <br/>
+                  <Typography variant="h2">
+                    I study at the Unviersity of Texas at Dallas
+                    as an undergraduate second-year
+                    Computer Science major,
+                    Cognitive Science minor.
+                  </Typography>
+                  <br/>
+                  <Typography variant="h2">
+                    I'm interested in internships or entry-level
+                    positions for CS or IT related fields.
+                  </Typography>
+                </Box>
               </Box>
-            </Container>
+            </Box>
 
-            <Box sx={{display: 'flex', justifyContent: 'flex-end', marginTop: '6%', textAlign: 'right'}}>  
-              <Container sx={{margin: '7% 31% auto'}}>
+            <Box sx={{display: 'flex', justifyContent: 'flex-end', textAlign: 'right', marginTop: '12%'}}>  
+              <Container sx={{margin: '4% 25% auto'}}>
                 <Button 
                   variant='contained'
-                  sx={{width: '110px', height: '110px'}}
+                  sx={{width: '110px', height: '110px', backgroundColor: 'primary.main'}}
                   startIcon={<ArticleIcon />}
                   onClick={() => {
                     const link = document.createElement("a");
@@ -90,8 +95,8 @@ function App() {
                 </Button>
                 <Button 
                   variant='outlined'
-                  sx={{width: '110px', height: '110px', marginLeft: '100%'}}>
-                  TBD
+                  sx={{width: '110px', height: '110px', marginLeft: '100%', color: 'primary.main'}}>
+                  Updated As Of 2022
                 </Button>
               </Container>
 
@@ -123,14 +128,21 @@ function App() {
                 <Typography variant="h2">469 - 212 - 2559</Typography>
               </Box>
 
-              <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '2px', height: '270px', marginLeft: '20px'}}/>
+              <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '2px', height: 'inherit', marginLeft: '4%'}}/>
             </Box>
           </Box>
 
-          <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '4px', height: '90%', margin: 'auto'}}/>
+          <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '4px', height: '90%', margin: 'auto 0 auto 0'}}/>
 
-          <Box sx={{width: '50%', height: '90%', margin: 'auto'}}>
-            <Typography variant="h2">Projects</Typography>
+          <Box sx={{width: '50%', height: '90%', margin: 'auto auto auto 2%'}}>
+            <Typography variant="h1" sx={{fontSize: '3rem'}}>Projects</Typography>
+            
+            <Container>
+              <Box sx={{width: '80%'}}>
+                  Offsight
+              </Box>
+            
+            </Container>
           </Box>
 
         </Box>
