@@ -1,41 +1,51 @@
 import './App.css';
-import { Box, Button, Container, Divider, Link, Typography } from '@mui/material';
+import { Box, Button, Container, Divider, IconButton, Link, Typography, Paper } from '@mui/material';
 import ArticleIcon from '@mui/icons-material/Article';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import React from 'react';
-
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import offsightLogo from './offsight.png'
+import breadyLogo from './bready.png'
+import snackHacksLogo from './snackHacks.png'
+import discreteHitlerLogo from './discreteHitler.png'
+import rinthLogo from './rinth.png'
+
 
 const theme = createTheme({
   palette: {
       mode: 'dark',
       primary: {
-          main: '#9A8C98',
-          light: '#C9ADA7',
+        main: '#9A8C98',
+        light: '#B29690',
       },
       secondary: {
-          main: '#22223B',
-          light: '#4A4E69',
+        main: '#22223B',
+        light: '#4A4E69',
       },
       background: {
-          main: '#F2E9E4',
-          paper: '#F2E9E4',
+        main: '#F2E9E4',
+        paper: '#F2E9E4',
       },
   },
   typography: {
       h1: {
-          fontFamily: 'Open Sans',
-          fontWeight: 300,
-          fontSize: '4rem',
-          color: '#22223B'
+        fontFamily: 'Open Sans',
+        fontWeight: 300,
+        fontSize: '4rem',
+        color: '#22223B'
       },
       h2: {
-          fontFamily: 'Open Sans',
-          fontWeight: 300,
-          fontSize: '1.8rem',
-          color: '#4A4E69'
+        fontFamily: 'Open Sans',
+        fontWeight: 300,
+        fontSize: '1.8rem',
+        color: '#4A4E69'
       },
-      h4: {
-          fontFamily: 'hind',
+      h3: {
+        fontFamily: 'Open Sans',
+        fontWeight: 300,
+        fontSize: '2.5rem',
+        color: 'white'
       },
   },
 });
@@ -65,7 +75,7 @@ function App() {
                   </Typography>
                   <br/>
                   <Typography variant="h2">
-                    I study at the Unviersity of Texas at Dallas
+                    I study at the Unviresity of Texas at Dallas
                     as an undergraduate second-year
                     Computer Science major,
                     Cognitive Science minor.
@@ -80,22 +90,22 @@ function App() {
             </Box>
 
             <Box sx={{display: 'flex', justifyContent: 'flex-end', textAlign: 'right', marginTop: '12%'}}>  
-              <Container sx={{margin: '4% 25% auto'}}>
+              <Container sx={{marginRight: '20%'}}>
                 <Button 
                   variant='contained'
-                  sx={{width: '110px', height: '110px', backgroundColor: 'primary.main'}}
+                  sx={{width: '110px', height: '110px', backgroundColor: 'primary.light'}}
                   startIcon={<ArticleIcon />}
                   onClick={() => {
                     const link = document.createElement("a");
                     link.download = `DanielHonrales_Resume_2022.pdf`;
-                    link.href = "./DanielHonrales_Resume_2022.pdf";
+                    link.href = "DanielHonrales_Resume_2022.pdf";
                     link.click();
                   }}>
                   Resume
                 </Button>
                 <Button 
                   variant='outlined'
-                  sx={{width: '110px', height: '110px', marginLeft: '100%', color: 'primary.main'}}>
+                  sx={{width: '110px', height: '110px', marginLeft: '100%', color: 'primary.light'}}>
                   Updated As Of 2022
                 </Button>
               </Container>
@@ -132,16 +142,164 @@ function App() {
             </Box>
           </Box>
 
+
+
           <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '4px', height: '90%', margin: 'auto 0 auto 0'}}/>
 
-          <Box sx={{width: '50%', height: '90%', margin: 'auto auto auto 2%'}}>
-            <Typography variant="h1" sx={{fontSize: '3rem'}}>Projects</Typography>
+
+
+          <Box sx={{width: '50%', height: '94%', margin: 'auto auto auto 2%'}}>
+            <Typography variant="h1" sx={{fontSize: '3rem', marginTop: '2%'}}>Projects</Typography>
             
-            <Container>
-              <Box sx={{width: '80%'}}>
-                  Offsight
-              </Box>
-            
+            <Container sx={{height: '80%', marginTop: '4%', overflow: 'auto'}}>
+              <Paper elevation={4} sx={{width: '100%', display: 'flex', backgroundColor: 'primary.light', borderRadius: '30px', marginBottom: '4%'}}>
+                  <Box sx={{width: '20%', marginLeft: '1%', display: 'flex', flexDirection: 'column'}}>
+                    <Box sx={{margin: '10% auto auto auto'}}>
+                      <img src={offsightLogo} alt="offsight.png" width='64' height='64'/>
+                    </Box>
+                    <Typography variant="h3" sx={{fontSize: '2vw', margin: 'auto auto 10% auto'}}>
+                      Offsight
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{width: '65%', display: 'flex'}}>
+                    <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
+                    <Typography variant="h2" sx={{fontSize: '1.5rem', color: 'white', margin: 'auto 0 auto 1%'}}>
+                    - 3rd Place Winner for TAMUHack 2022<br/>
+                      - File organizer / assignment tracker for students
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{width: '15%', backgroundColor: 'primary.main', borderRadius: '0px 30px 30px 0px'}}>
+                    <IconButton
+                      sx={{width: '100%', height: '100%'}}
+                      onClick={() => {
+                        window.open('https://devpost.com/software/offsight');
+                      }}>
+                      <OpenInNewIcon sx={{width: '70%', height: '70%'}}/>
+                    </IconButton>
+                  </Box> 
+              </Paper>
+              
+
+              <Paper elevation={4} sx={{width: '100%', display: 'flex', backgroundColor: 'primary.light', borderRadius: '30px', marginBottom: '4%'}}>
+                  <Box sx={{width: '20%', marginLeft: '1%', display: 'flex', flexDirection: 'column'}}>
+                    <Box sx={{margin: '10% auto auto auto'}}>
+                      <img src={breadyLogo} alt="bready.png" width='64' height='64'/>
+                    </Box>
+                    <Typography variant="h3" sx={{fontSize: '2vw', margin: 'auto auto 10% auto'}}>
+                    Bready
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{width: '65%', display: 'flex'}}>
+                    <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
+                    <Typography variant="h2" sx={{fontSize: '1.5rem', color: 'white', margin: 'auto 0 auto 1%'}}>
+                      - Submission for HackUTD 2021<br/>
+                      - Local restaurant deal tracker
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{width: '15%', backgroundColor: 'primary.main', borderRadius: '0px 30px 30px 0px'}}>
+                    <IconButton
+                      sx={{width: '100%', height: '100%'}}
+                      onClick={() => {
+                        window.open('https://devpost.com/software/bready');
+                      }}>
+                      <OpenInNewIcon sx={{width: '70%', height: '70%'}}/>
+                    </IconButton>
+                  </Box> 
+              </Paper>
+
+
+              <Paper elevation={4} sx={{width: '100%', display: 'flex', backgroundColor: 'primary.light', borderRadius: '30px', marginBottom: '4%'}}>
+                  <Box sx={{width: '20%', marginLeft: '1%', display: 'flex', flexDirection: 'column'}}>
+                    <Box sx={{margin: '10% auto auto auto'}}>
+                      <img src={snackHacksLogo} alt="snackHacks.png" width='64' height='64'/>
+                    </Box>
+                    <Typography variant="h3" sx={{fontSize: '1.5vw', margin: 'auto auto 10% auto'}}>
+                      SnackHacks
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{width: '65%', display: 'flex'}}>
+                    <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
+                    <Typography variant="h2" sx={{fontSize: '1.5rem', color: 'white', margin: 'auto 0 auto 1%'}}>
+                      - Submission for TAMUHack 2021<br/>
+                      - Ingredient-based recipe finder
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{width: '15%', backgroundColor: 'primary.main', borderRadius: '0px 30px 30px 0px'}}>
+                    <IconButton
+                      sx={{width: '100%', height: '100%'}}
+                      onClick={() => {
+                        window.open('https://devpost.com/software/snackhacks');
+                      }}>
+                      <OpenInNewIcon sx={{width: '70%', height: '70%'}}/>
+                    </IconButton>
+                  </Box> 
+              </Paper>
+
+
+              <Paper elevation={4} sx={{width: '100%', display: 'flex', backgroundColor: 'primary.light', borderRadius: '30px', marginBottom: '4%'}}>
+                  <Box sx={{width: '20%', marginLeft: '1%', display: 'flex', flexDirection: 'column'}}>
+                    <Box sx={{margin: '10% auto auto auto'}}>
+                      <img src={rinthLogo} alt="snackHacks.png" width='64' height='64'/>
+                    </Box>
+                    <Typography variant="h3" sx={{fontSize: '1.5vw', margin: 'auto auto 10% auto'}}>
+                      Rinth
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{width: '65%', display: 'flex'}}>
+                    <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
+                    <Typography variant="h2" sx={{fontSize: '1.5rem', color: 'white', margin: 'auto 0 auto 1%'}}>
+                      - Submission for UTD GameJam 2020<br/>
+                      - Unity-based horror game
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{width: '15%', backgroundColor: 'primary.main', borderRadius: '0px 30px 30px 0px'}}>
+                    <IconButton
+                      sx={{width: '100%', height: '100%'}}
+                      onClick={() => {
+                        window.open('https://danielhonrales.itch.io/rinthnew');
+                      }}>
+                      <OpenInNewIcon sx={{width: '70%', height: '70%'}}/>
+                    </IconButton>
+                  </Box> 
+              </Paper>
+
+
+              <Paper elevation={4} sx={{width: '100%', display: 'flex', backgroundColor: 'primary.light', borderRadius: '30px', marginBottom: '4%'}}>
+                  <Box sx={{width: '20%', marginLeft: '1%', display: 'flex', flexDirection: 'column'}}>
+                    <Box sx={{margin: '10% auto auto auto'}}>
+                      <img src={discreteHitlerLogo} alt="discreteHitler.png" width='64' height='64'/>
+                    </Box>
+                    <Typography variant="h3" sx={{fontSize: '1.3vw', margin: 'auto auto 10% auto'}}>
+                      Discrete Hitler
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{width: '65%', display: 'flex'}}>
+                    <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
+                    <Typography variant="h2" sx={{fontSize: '1.5rem', color: 'white', margin: 'auto 0 auto 1%'}}>
+                      - Personal quarantine project<br/>
+                      - Discord bot for playing the "Secret Hitler" board game virtually
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{width: '15%', backgroundColor: 'primary.main', borderRadius: '0px 30px 30px 0px'}}>
+                    <IconButton
+                      sx={{width: '100%', height: '100%'}}
+                      onClick={() => {
+                        window.open('https://github.com/danielhonrales/Discrete-Hitler');
+                      }}>
+                      <OpenInNewIcon sx={{width: '70%', height: '70%'}}/>
+                    </IconButton>
+                  </Box> 
+              </Paper>
             </Container>
           </Box>
 
