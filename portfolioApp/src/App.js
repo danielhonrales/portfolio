@@ -17,7 +17,7 @@ const theme = createTheme({
       mode: 'dark',
       primary: {
         main: '#9A8C98',
-        light: '#B29690',
+        light: '#A88C86',
       },
       secondary: {
         main: '#22223B',
@@ -51,6 +51,7 @@ const theme = createTheme({
 });
 
 function App() {
+  document.body.style.background = '#F2E9E4';
   return (
     <ThemeProvider theme={theme}>
         <Box sx={{display: 'flex', 
@@ -90,10 +91,10 @@ function App() {
             </Box>
 
             <Box sx={{display: 'flex', justifyContent: 'flex-end', textAlign: 'right', marginTop: '12%'}}>  
-              <Container sx={{marginRight: '20%'}}>
+              <Container sx={{margin: '3% 20%'}}>
                 <Button 
                   variant='contained'
-                  sx={{width: '110px', height: '110px', backgroundColor: 'primary.light'}}
+                  sx={{fontSize: '.7vw', width: '5.5vw', height: '10.5vh', backgroundColor: 'primary.light'}}
                   startIcon={<ArticleIcon />}
                   onClick={() => {
                     const link = document.createElement("a");
@@ -105,7 +106,7 @@ function App() {
                 </Button>
                 <Button 
                   variant='outlined'
-                  sx={{width: '110px', height: '110px', marginLeft: '100%', color: 'primary.light'}}>
+                  sx={{fontSize: '.7vw', width: '5.5vw', height: '10.5vh', marginLeft: '100%', color: 'primary.light'}}>
                   Updated As Of 2022
                 </Button>
               </Container>
@@ -132,6 +133,7 @@ function App() {
                   href="mailto:danielhonrales@gmail.com"
                   color="secondary.main"
                   variant='h2'
+                  sx={{fontSize: '1.6rem'}}
                 >danielhonrales@gmail.com</Link>
                 <br/><br/>
 
@@ -176,7 +178,7 @@ function App() {
                       onClick={() => {
                         window.open('https://devpost.com/software/offsight');
                       }}>
-                      <OpenInNewIcon sx={{width: '70%', height: '70%'}}/>
+                      <OpenInNewIcon sx={{width: '60%', height: '60%'}}/>
                     </IconButton>
                   </Box> 
               </Paper>
@@ -206,7 +208,7 @@ function App() {
                       onClick={() => {
                         window.open('https://devpost.com/software/bready');
                       }}>
-                      <OpenInNewIcon sx={{width: '70%', height: '70%'}}/>
+                      <OpenInNewIcon sx={{width: '60%', height: '60%'}}/>
                     </IconButton>
                   </Box> 
               </Paper>
@@ -236,7 +238,7 @@ function App() {
                       onClick={() => {
                         window.open('https://devpost.com/software/snackhacks');
                       }}>
-                      <OpenInNewIcon sx={{width: '70%', height: '70%'}}/>
+                      <OpenInNewIcon sx={{width: '60%', height: '60%'}}/>
                     </IconButton>
                   </Box> 
               </Paper>
@@ -266,7 +268,7 @@ function App() {
                       onClick={() => {
                         window.open('https://danielhonrales.itch.io/rinthnew');
                       }}>
-                      <OpenInNewIcon sx={{width: '70%', height: '70%'}}/>
+                      <OpenInNewIcon sx={{width: '60%', height: '60%'}}/>
                     </IconButton>
                   </Box> 
               </Paper>
@@ -296,7 +298,7 @@ function App() {
                       onClick={() => {
                         window.open('https://github.com/danielhonrales/Discrete-Hitler');
                       }}>
-                      <OpenInNewIcon sx={{width: '70%', height: '70%'}}/>
+                      <OpenInNewIcon sx={{width: '60%', height: '60%'}}/>
                     </IconButton>
                   </Box> 
               </Paper>
