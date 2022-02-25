@@ -91,10 +91,10 @@ function App() {
             </Box>
 
             <Box sx={{display: 'flex', justifyContent: 'flex-end', textAlign: 'right', marginTop: '12%'}}>  
-              <Container sx={{margin: '3% 20%'}}>
+              <Container sx={{margin: '3% 28%'}}>
                 <Button 
                   variant='contained'
-                  sx={{fontSize: '.7vw', width: '5.5vw', height: '10.5vh', backgroundColor: 'primary.light'}}
+                  sx={{fontSize: '.7vw', width: '5.5vw', height: '5.5vw', backgroundColor: 'primary.light'}}
                   startIcon={<ArticleIcon />}
                   onClick={() => {
                     const link = document.createElement("a");
@@ -106,7 +106,7 @@ function App() {
                 </Button>
                 <Button 
                   variant='outlined'
-                  sx={{fontSize: '.7vw', width: '5.5vw', height: '10.5vh', marginLeft: '100%', color: 'primary.light'}}>
+                  sx={{fontSize: '.7vw', width: '5.5vw', height: '5.5vw', marginLeft: '100%', color: 'primary.light'}}>
                   Updated As Of 2022
                 </Button>
               </Container>
