@@ -32,7 +32,7 @@ const theme = createTheme({
       h1: {
         fontFamily: 'Open Sans',
         fontWeight: 300,
-        fontSize: '4rem',
+        fontSize: '3.35vw',
         color: '#22223B'
       },
       h2: {
@@ -151,7 +151,7 @@ function App() {
 
 
           <Box sx={{width: '50%', height: '94%', margin: 'auto auto auto 2%'}}>
-            <Typography variant="h1" sx={{fontSize: '3rem', marginTop: '2%'}}>Projects</Typography>
+            <Typography variant="h1" sx={{fontSize: '2.7vw', marginTop: '2%'}}>Projects</Typography>
             
             <Container sx={{height: '80%', marginTop: '4%', overflow: 'auto'}}>
               <Paper elevation={4} sx={{width: '100%', display: 'flex', backgroundColor: 'primary.light', borderRadius: '30px', marginBottom: '4%'}}>
@@ -166,7 +166,7 @@ function App() {
 
                   <Box sx={{width: '65%', display: 'flex'}}>
                     <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
-                    <Typography variant="h2" sx={{fontSize: '1.5rem', color: 'white', margin: 'auto 0 auto 1%'}}>
+                    <Typography variant="h2" sx={{fontSize: '1.2vw', color: 'white', margin: 'auto 0 auto 1%'}}>
                     - 3rd Place Winner for TAMUHack 2022<br/>
                       - File organizer / assignment tracker for students
                     </Typography>
@@ -196,7 +196,7 @@ function App() {
 
                   <Box sx={{width: '65%', display: 'flex'}}>
                     <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
-                    <Typography variant="h2" sx={{fontSize: '1.5rem', color: 'white', margin: 'auto 0 auto 1%'}}>
+                    <Typography variant="h2" sx={{fontSize: '1.2vw', color: 'white', margin: 'auto 0 auto 1%'}}>
                       - Submission for HackUTD 2021<br/>
                       - Local restaurant deal tracker
                     </Typography>
@@ -226,7 +226,7 @@ function App() {
 
                   <Box sx={{width: '65%', display: 'flex'}}>
                     <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
-                    <Typography variant="h2" sx={{fontSize: '1.5rem', color: 'white', margin: 'auto 0 auto 1%'}}>
+                    <Typography variant="h2" sx={{fontSize: '1.2vw', color: 'white', margin: 'auto 0 auto 1%'}}>
                       - Submission for TAMUHack 2021<br/>
                       - Ingredient-based recipe finder
                     </Typography>
@@ -256,7 +256,7 @@ function App() {
 
                   <Box sx={{width: '65%', display: 'flex'}}>
                     <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
-                    <Typography variant="h2" sx={{fontSize: '1.5rem', color: 'white', margin: 'auto 0 auto 1%'}}>
+                    <Typography variant="h2" sx={{fontSize: '1.2vw', color: 'white', margin: 'auto 0 auto 1%'}}>
                       - Submission for UTD GameJam 2020<br/>
                       - Unity-based horror game
                     </Typography>
@@ -286,7 +286,7 @@ function App() {
 
                   <Box sx={{width: '65%', display: 'flex'}}>
                     <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
-                    <Typography variant="h2" sx={{fontSize: '1.5rem', color: 'white', margin: 'auto 0 auto 1%'}}>
+                    <Typography variant="h2" sx={{fontSize: '1.2vw', color: 'white', margin: 'auto 0 auto 1%'}}>
                       - Personal quarantine project<br/>
                       - Discord bot for playing the "Secret Hitler" board game virtually
                     </Typography>
