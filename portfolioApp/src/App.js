@@ -76,7 +76,7 @@ function App() {
                   </Typography>
                   <br/>
                   <Typography variant="h2">
-                    I study at the Unviresity of Texas at Dallas
+                    I study at the University of Texas at Dallas
                     as an undergraduate second-year
                     Computer Science major,
                     Cognitive Science minor.
