@@ -38,7 +38,7 @@ const theme = createTheme({
       h2: {
         fontFamily: 'Open Sans',
         fontWeight: 300,
-        fontSize: '1.8rem',
+        fontSize: '1.5vw',
         color: '#4A4E69'
       },
       h3: {
@@ -133,7 +133,7 @@ function App() {
                   href="mailto:danielhonrales@gmail.com"
                   color="secondary.main"
                   variant='h2'
-                  sx={{fontSize: '1.6rem'}}
+                  sx={{fontSize: '1.4vw'}}
                 >danielhonrales@gmail.com</Link>
                 <br/><br/>
 
