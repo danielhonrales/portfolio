@@ -30,19 +30,19 @@ const theme = createTheme({
   },
   typography: {
       h1: {
-        fontFamily: 'Open Sans',
+        fontFamily: 'Comfortaa',
         fontWeight: 300,
         fontSize: '3.35vw',
         color: '#22223B'
       },
       h2: {
-        fontFamily: 'Open Sans',
+        fontFamily: 'Comfortaa',
         fontWeight: 300,
         fontSize: '1.7vw',
         color: '#4A4E69'
       },
       h3: {
-        fontFamily: 'Open Sans',
+        fontFamily: 'Comfortaa',
         fontWeight: 300,
         fontSize: '2.5rem',
         color: 'white'
@@ -70,7 +70,7 @@ function App() {
                 <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '2px', height: 'inherit', marginRight: '3%'}}/>
                 <Box sx={{flexDirection: 'column'}}>
                   <Typography variant="h2">
-                    I enjoy gaming all things Nintendo,
+                    I enjoy making boba tea drinks,
                     reading strange case studies on the mind,
                     and overthinking code.
                   </Typography>
@@ -107,7 +107,7 @@ function App() {
                 <Button 
                   variant='outlined'
                   sx={{fontSize: '.7vw', width: '5.5vw', height: '5.5vw', marginLeft: '100%', color: 'primary.light'}}>
-                  Updated As Of 2022
+                  Updated As Of 02/2022
                 </Button>
               </Container>
 
@@ -166,8 +166,8 @@ function App() {
 
                   <Box sx={{width: '65%', display: 'flex'}}>
                     <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
-                    <Typography variant="h2" sx={{fontSize: '1.5vw', color: 'white', margin: 'auto 0 auto 1%'}}>
-                    - 3rd Place Winner for TAMUHack 2022<br/>
+                    <Typography variant="h2" sx={{fontSize: '1.4vw', color: 'white', margin: 'auto 0 auto 1%'}}>
+                      - 3rd Place Winner for TAMUHack 2022<br/>
                       - File organizer / assignment tracker for students
                     </Typography>
                   </Box>
@@ -196,7 +196,7 @@ function App() {
 
                   <Box sx={{width: '65%', display: 'flex'}}>
                     <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
-                    <Typography variant="h2" sx={{fontSize: '1.5vw', color: 'white', margin: 'auto 0 auto 1%'}}>
+                    <Typography variant="h2" sx={{fontSize: '1.4vw', color: 'white', margin: 'auto 0 auto 1%'}}>
                       - Submission for HackUTD 2021<br/>
                       - Local restaurant deal tracker
                     </Typography>
@@ -219,14 +219,14 @@ function App() {
                     <Box sx={{margin: '10% auto auto auto'}}>
                       <img src={snackHacksLogo} alt="snackHacks.png" width='64' height='64'/>
                     </Box>
-                    <Typography variant="h3" sx={{fontSize: '1.5vw', margin: 'auto auto 10% auto'}}>
+                    <Typography variant="h3" sx={{fontSize: '1.4vw', margin: 'auto auto 10% auto'}}>
                       SnackHacks
                     </Typography>
                   </Box>
 
                   <Box sx={{width: '65%', display: 'flex'}}>
                     <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
-                    <Typography variant="h2" sx={{fontSize: '1.5vw', color: 'white', margin: 'auto 0 auto 1%'}}>
+                    <Typography variant="h2" sx={{fontSize: '1.4vw', color: 'white', margin: 'auto 0 auto 1%'}}>
                       - Submission for TAMUHack 2021<br/>
                       - Ingredient-based recipe finder
                     </Typography>
@@ -256,7 +256,7 @@ function App() {
 
                   <Box sx={{width: '65%', display: 'flex'}}>
                     <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
-                    <Typography variant="h2" sx={{fontSize: '1.5vw', color: 'white', margin: 'auto 0 auto 1%'}}>
+                    <Typography variant="h2" sx={{fontSize: '1.4vw', color: 'white', margin: 'auto 0 auto 1%'}}>
                       - Submission for UTD GameJam 2020<br/>
                       - Unity-based horror game
                     </Typography>
@@ -279,14 +279,14 @@ function App() {
                     <Box sx={{margin: '10% auto auto auto'}}>
                       <img src={discreteHitlerLogo} alt="discreteHitler.png" width='64' height='64'/>
                     </Box>
-                    <Typography variant="h3" sx={{fontSize: '1.3vw', margin: 'auto auto 10% auto'}}>
+                    <Typography variant="h3" sx={{fontSize: '1.2vw', margin: 'auto auto 10% auto'}}>
                       Discrete Hitler
                     </Typography>
                   </Box>
 
                   <Box sx={{width: '65%', display: 'flex'}}>
                     <Divider orientation='vertical' sx={{backgroundColor: 'white', width: '2px', height: '80%', margin: 'auto 1% auto 1%'}}/>
-                    <Typography variant="h2" sx={{fontSize: '1.5vw', color: 'white', margin: 'auto 0 auto 1%'}}>
+                    <Typography variant="h2" sx={{fontSize: '1.4vw', color: 'white', margin: 'auto 0 auto 1%'}}>
                       - Personal quarantine project<br/>
                       - Discord bot for playing the "Secret Hitler" board game virtually
                     </Typography>
