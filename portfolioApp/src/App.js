@@ -4,6 +4,7 @@ import ArticleIcon from '@mui/icons-material/Article';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import offsightLogo from './offsight.png'
 import breadyLogo from './bready.png'
@@ -52,15 +53,25 @@ const theme = createTheme({
 
 function App() {
   document.body.style.background = '#F2E9E4';
+  const mobile = useMediaQuery('(min-width:1000px)');
+  let flexDirection;
+  
+  if(mobile){
+    flexDirection = 'row';
+  }else{
+    flexDirection = 'column';
+  }
+
   return (
     <ThemeProvider theme={theme}>
         <Box sx={{display: 'flex', 
+                  flexDirection: {flexDirection},
                   backgroundColor: 'background.main', 
                   color: 'secondary.light',
                   width: '100vw',
                   height: '100vh'}}>
 
-          <Box sx={{width: '38%', margin: 'auto 2% auto auto'}}>
+          <Box sx={{width: '38%', margin: 'auto auto auto auto'}}>
             
             <Box sx={{width: '100%', height: '68%'}}>
               <Typography variant="h2">Hello, I'm<br/></Typography>
@@ -145,8 +156,6 @@ function App() {
           </Box>
 
 
-
-          <Divider orientation='vertical' sx={{backgroundColor: 'primary.main', width: '4px', height: '90%', margin: 'auto 0 auto 0'}}/>
 
 
 
