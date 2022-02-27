@@ -53,7 +53,7 @@ const theme = createTheme({
 
 function App() {
   document.body.style.background = '#F2E9E4';
-  const mobile = useMediaQuery('(min-width:1000px)');
+  const mobile = useMediaQuery('(min-width:480px)');
   let flexDirection;
   
   if(mobile){
