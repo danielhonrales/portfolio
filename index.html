@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Daniel Honrales</title>
+  <meta name="description" content="Daniel Honrales — HCI researcher working on thermal and tactile haptics, multisensory perception, and XR.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232F5D3A'/><text x='32' y='42' font-family='Georgia,serif' font-size='28' fill='white' text-anchor='middle'>DH</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --ink: #22261F;
+      --muted: #5E6358;
+      --forest: #2F5D3A;   /* primary green */
+      --moss: #7E9B5A;     /* light green */
+      --walnut: #6B4A2E;   /* primary brown */
+      --clay: #A9825A;     /* light brown */
+      --line: #E8E1D6;     /* warm hairline */
+      --wash: #F5F8F1;     /* faint green tint */
+
+      --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+      --sans: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --sidebar: 268px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--forest); text-decoration-color: color-mix(in srgb, var(--forest) 35%, transparent); text-underline-offset: 3px; }
+    a:hover { color: var(--walnut); text-decoration-color: var(--walnut); }
+    :focus-visible { outline: 2px solid var(--walnut); outline-offset: 3px; border-radius: 3px; }
+
+    /* ---------- Sidebar ---------- */
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar);
+      display: flex;
+      flex-direction: column;
+      padding: 3rem 2rem 2rem;
+      border-right: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .name {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.85rem;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin: 0;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .name:hover { color: var(--forest); }
+    .role {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0.6rem 0 0;
+      line-height: 1.45;
+    }
+
+    /* The one bold element: a heat-gradient rail that slides to the active section */
+    .nav {
+      position: relative;
+      margin-top: 3rem;
+      padding-left: 1.1rem;
+    }
+    .nav::before {           /* track */
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--line);
+      border-radius: 2px;
+    }
+    .nav-rail {              /* moving indicator */
+      position: absolute;
+      left: -1px;
+      width: 4px;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, var(--forest), var(--moss) 55%, var(--clay));
+      transition: top 380ms cubic-bezier(.3,.7,.2,1), height 380ms cubic-bezier(.3,.7,.2,1);
+    }
+    @media (prefers-reduced-motion: reduce) { .nav-rail { transition: none; } }
+
+    .nav ul { list-style: none; margin: 0; padding: 0; }
+    .nav a {
+      display: block;
+      padding: 0.5rem 0;
+      font-family: var(--sans);
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav a:hover { color: var(--walnut); }
+    .nav a[aria-current="true"] { color: var(--forest); }
+
+    .socials {
+      margin-top: auto;
+      display: flex;
+      gap: 0.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .socials a {
+      display: grid;
+      place-items: center;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      color: var(--walnut);
+    }
+    .socials a:hover { background: var(--wash); color: var(--forest); }
+    .socials svg { width: 20px; height: 20px; }
+
+    /* ---------- Main ---------- */
+    main {
+      margin-left: var(--sidebar);
+      padding: 4.5rem clamp(1.5rem, 6vw, 5.5rem) 6rem;
+    }
+    .measure { max-width: 42rem; }
+
+    section { padding-bottom: 5rem; }
+    section + section { padding-top: 4rem; border-top: 1px solid var(--line); }
+
+    h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 2.4rem;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--forest);
+      margin: 0 0 1.75rem;
+    }
+    h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--walnut);
+      margin: 2.75rem 0 1rem;
+    }
+    p { margin: 0 0 1.1rem; }
+
+    /* About */
+    .intro {
+      display: grid;
+      grid-template-columns: 9.5rem 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .portrait {
+      position: relative;
+      width: 9.5rem;
+      aspect-ratio: 4 / 5;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--wash);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      color: var(--moss);
+    }
+    .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .lede { font-size: 1.3rem; line-height: 1.5; margin-bottom: 1.1rem; }
+
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .interests li {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: var(--wash);
+      color: var(--forest);
+    }
+
+    /* Dated lists (news, blog) */
+    .dated { list-style: none; margin: 0; padding: 0; }
+    .dated li {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+      gap: 1rem;
+      padding: 0.6rem 0;
+    }
+    .dated time {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--clay);
+      padding-top: 0.2rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .post { padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+    .post:first-of-type { padding-top: 0; }
+    .post h4 { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; margin: 0 0 0.3rem; }
+    .post h4 a { color: var(--ink); text-decoration: none; }
+    .post h4 a:hover { color: var(--forest); }
+    .post time { font-family: var(--sans); font-size: 0.85rem; color: var(--clay); }
+    .post p { margin: 0.5rem 0 0; color: var(--muted); }
+
+    /* CV */
+    .cv-actions { margin-bottom: 0.5rem; }
+    .button {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.65rem 1.15rem;
+      border-radius: 6px;
+      background: var(--forest);
+      color: #fff;
+      text-decoration: none;
+    }
+    .button:hover { background: var(--walnut); color: #fff; }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.25rem 1.5rem;
+      padding: 0.6rem 0;
+    }
+    .entry strong { font-weight: 600; }
+    .entry .when {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--clay);
+      white-space: nowrap;
+      padding-top: 0.25rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .entry .detail { grid-column: 1 / -1; color: var(--muted); font-size: 1rem; }
+
+    .pub { padding: 0.8rem 0 0.8rem 1rem; border-left: 3px solid var(--line); margin-bottom: 0.75rem; }
+    .pub:hover { border-left-color: var(--moss); }
+    .pub .title { font-weight: 500; }
+    .pub .authors { font-size: 1rem; color: var(--muted); }
+    .pub .me { color: var(--ink); text-decoration: underline; text-decoration-color: var(--clay); text-underline-offset: 3px; }
+    .pub .venue { font-family: var(--sans); font-size: 0.85rem; color: var(--walnut); font-weight: 500; }
+    .pub .links { font-family: var(--sans); font-size: 0.85rem; margin-top: 0.25rem; display: flex; gap: 1rem; }
+
+    /* Extras */
+    .extras {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+      gap: 2rem 2.5rem;
+    }
+    .extra h4 { font-family: var(--sans); font-size: 1rem; font-weight: 600; margin: 0 0 0.35rem; color: var(--ink); }
+    .extra p { font-size: 1rem; color: var(--muted); margin: 0; }
+
+    footer {
+      margin-left: var(--sidebar);
+      padding: 0 clamp(1.5rem, 6vw, 5.5rem) 3rem;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 860px) {
+      .sidebar {
+        position: sticky;
+        top: 0;
+        inset: auto;
+        width: auto;
+        z-index: 10;
+        padding: calc(0.9rem + env(safe-area-inset-top, 0px)) 1.25rem 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .name { font-size: 1.35rem; }
+      .role { display: none; }
+      .socials { margin: 0; padding: 0; border: 0; gap: 0; }
+      .socials a { width: 36px; height: 36px; }
+      .socials svg { width: 18px; height: 18px; }
+      .nav { order: 3; width: 100%; margin: 0.4rem 0 0; padding: 0; }
+      .nav::before, .nav-rail { display: none; }
+      .nav ul { display: flex; gap: 1.5rem; overflow-x: auto; }
+      .nav a { padding: 0.55rem 0 0.7rem; border-bottom: 2px solid transparent; }
+      .nav a[aria-current="true"] { border-bottom-color: var(--forest); }
+
+      main, footer { margin-left: 0; }
+      main { padding-top: 2.5rem; }
+      html { scroll-padding-top: 7rem; }
+      h2 { font-size: 2rem; }
+      .intro { grid-template-columns: 1fr; }
+      .dated li { grid-template-columns: 1fr; gap: 0; }
+      .entry { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div>
+      <a class="name" href="#about">Daniel Honrales</a>
+      <p class="role">Haptics, multisensory perception, and XR</p>
+    </div>
+
+    <nav class="nav" aria-label="Sections">
+      <span class="nav-rail" aria-hidden="true"></span>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#extras">Extras</a></li>
+      </ul>
+    </nav>
+
+    <!-- EDIT: replace the # links with your real profile URLs -->
+    <div class="socials">
+      <a href="https://github.com/danielhonrales" aria-label="GitHub" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.82-.26.82-.58v-2.03c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+      </a>
+      <a href="#" aria-label="Google Scholar" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5 12 4l10 5.5-10 5.5z"/><path d="M6 11.7V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.3"/><path d="M22 9.5V15"/></svg>
+      </a>
+      <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V16.5"/><circle cx="8" cy="7.5" r=".6" fill="currentColor"/><path d="M12 16.5v-6"/><path d="M12 13.2c0-1.6 1-2.7 2.4-2.7s2.1 1 2.1 2.6v3.4"/></svg>
+      </a>
+      <a href="mailto:you@example.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+      </a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="measure">
+
+      <!-- ===================== ABOUT ===================== -->
+      <section id="about">
+        <h2>About</h2>
+        <div class="intro">
+          <!-- EDIT: add images/headshot.jpg to the repo; the initials show until it exists -->
+          <div class="portrait">
+            DH
+            <img src="images/headshot.jpg" alt="Portrait of Daniel Honrales" onerror="this.remove()">
+          </div>
+          <div>
+            <p class="lede">I build displays that make you feel heat, touch, and motion on the skin, and study how people perceive them.</p>
+            <p>My research sits in human–computer interaction, focused on thermal-tactile haptics and multisensory perception for XR. I work across the full stack of a study: designing the experiment, building the hardware and software, and running it with people.</p>
+            <p>Next, I’m bringing haptics into games and live events: thermal feedback in controllers and keyboard-and-mouse setups, and recreating the feel of concerts, conventions, and exhibitions.</p>
+          </div>
+        </div>
+
+        <h3>Research interests</h3>
+        <ul class="interests">
+          <li>Thermal haptics</li>
+          <li>Tactile illusions</li>
+          <li>Multisensory perception</li>
+          <li>XR / AR</li>
+          <li>Haptics for games</li>
+          <li>Wearables &amp; embedded systems</li>
+        </ul>
+
+        <h3>News</h3>
+        <!-- EDIT: newest first -->
+        <ul class="dated">
+          <li><time datetime="2025-09">Sep 2025</time><span><em>HeatFlow</em> presented at UIST 2025.</span></li>
+          <li><time datetime="2025-01">Month 2025</time><span>Add a news item here.</span></li>
+        </ul>
+      </section>
+
+      <!-- ===================== BLOG ===================== -->
+      <section id="blog">
+        <h2>Blog</h2>
+        <!-- EDIT: copy an <article> block per post; link to a separate page or external post -->
+        <article class="post">
+          <h4><a href="#">Post title goes here</a></h4>
+          <time datetime="2026-01-01">Jan 1, 2026</time>
+          <p>One or two sentences on what the post covers.</p>
+        </article>
+        <article class="post">
+          <h4><a href="#">Another post title</a></h4>
+          <time datetime="2025-12-01">Dec 1, 2025</time>
+          <p>One or two sentences on what the post covers.</p>
+        </article>
+      </section>
+
+      <!-- ===================== CV ===================== -->
+      <section id="cv">
+        <h2>CV</h2>
+        <!-- EDIT: add cv.pdf to the repo root -->
+        <p class="cv-actions"><a class="button" href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></p>
+
+        <h3>Education</h3>
+        <div class="entry">
+          <span><strong>Virginia Tech</strong>, Degree &amp; field</span>
+          <span class="when">Year – present</span>
+        </div>
+        <div class="entry">
+          <span><strong>The University of Texas at Dallas</strong>, Degree &amp; field</span>
+          <span class="when">Year – Year</span>
+        </div>
+
+        <h3>Publications</h3>
+        <div class="pub">
+          <div class="title">HeatFlow: A Thermal-Tactile Display for Dynamic 2D Thermal Movements</div>
+          <div class="authors">Singhal*, <span class="me">Honrales*</span>, Kim &nbsp;<small>(* co-first authors)</small></div>
+          <div class="venue">UIST 2025</div>
+          <div class="links"><a href="#">Paper</a><a href="#">Video</a></div>
+        </div>
+
+        <h3>Research experience</h3>
+        <div class="entry">
+          <span><strong>Research Assistant</strong>, Lab name, UT Dallas</span>
+          <span class="when">Year – Year</span>
+          <span class="detail">Thermal-tactile displays and multisensory perception studies.</span>
+        </div>
+
+        <h3>Service</h3>
+        <div class="entry">
+          <span>Reviewer, venue</span>
+          <span class="when">Year</span>
+        </div>
+      </section>
+
+      <!-- ===================== EXTRAS ===================== -->
+      <section id="extras">
+        <h2>Extras</h2>
+        <!-- EDIT: side projects, talks, hobbies — copy a .extra block per item -->
+        <div class="extras">
+          <div class="extra">
+            <h4><a href="#">TCG card detection</a></h4>
+            <p>A computer vision pipeline that detects and identifies trading cards with oriented bounding boxes.</p>
+          </div>
+          <div class="extra">
+            <h4><a href="#">Project title</a></h4>
+            <p>A short description of a side project, talk, or demo.</p>
+          </div>
+          <div class="extra">
+            <h4>Outside the lab</h4>
+            <p>A line about hobbies or what you’re into lately.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>© <span id="year"></span> Daniel Honrales</footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll-spy: highlight the current section and slide the rail to it
+    const links = [...document.querySelectorAll(".nav a")];
+    const rail = document.querySelector(".nav-rail");
+    const sections = links.map(a => document.querySelector(a.getAttribute("href")));
+
+    function setActive(id) {
+      links.forEach(a => {
+        const on = a.getAttribute("href") === "#" + id;
+        a.setAttribute("aria-current", on ? "true" : "false");
+        if (on && rail) {
+          rail.style.top = a.offsetTop + 6 + "px";
+          rail.style.height = a.offsetHeight - 12 + "px";
+        }
+      });
+    }
+
+    function update() {
+      const marker = window.innerHeight * 0.3;
+      let current = sections[0].id;
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= marker) current = s.id;
+      }
+      // At page bottom, select the last section
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) {
+        current = sections[sections.length - 1].id;
+      }
+      setActive(current);
+    }
+
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  </script>
+</body>
+</html>
