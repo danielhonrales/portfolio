@@ -137,7 +137,11 @@
       margin-left: var(--sidebar);
       padding: 4.5rem clamp(1.5rem, 6vw, 5.5rem) 6rem;
     }
-    .measure { max-width: 56rem; margin: 0 auto; }   /* centered in the space beside the sidebar */
+    .measure {               /* centered on the screen, as far as the sidebar allows */
+      max-width: 56rem;
+      margin-left: max(0px, calc((100vw - 56rem) / 2 - var(--sidebar) - clamp(1.5rem, 6vw, 5.5rem)));
+      margin-right: auto;
+    }
 
     section { padding-bottom: 5rem; }
     section + section { padding-top: 4rem; border-top: 1px solid var(--line); }
@@ -161,10 +165,10 @@
     p { margin: 0 0 1.1rem; }
 
     /* About */
-    .intro::after { content: ""; display: table; clear: both; }
+    .intro-top { display: flex; align-items: center; gap: 1.75rem; margin-bottom: 1.4rem; }
+    .intro-top .lede { margin: 0; flex: 1; }
     .portrait {
-      float: left;
-      margin: 0.35rem 1.75rem 0.75rem 0;
+      flex: none;
       position: relative;
       width: 9.5rem;
       aspect-ratio: 1 / 1;
@@ -317,11 +321,8 @@
       color: var(--walnut);
     }
     .dated .tag { margin: 0; vertical-align: 0; }
-    .pub .title .tag {
-      display: block;
-      width: fit-content;
-      margin: 0 0 0.3rem;
-    }
+    .pub .tags { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.4rem; margin-bottom: 0.3rem; }
+    .pub .tags .tag { margin: 0; }
     .award {
       background: color-mix(in srgb, var(--forest) 14%, transparent);
       color: var(--forest);
@@ -334,18 +335,20 @@
     .korok {                 /* fixed width (fits the largest stones), so resizing them never reflows the paragraph */
       position: relative;
       flex: none;
-      width: 8rem;
+      width: 9rem;
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
     }
-    .korok-hint {            /* hangs just below the stones, right-aligned with them */
+    .korok-hint, .korok-found {   /* captions hang just below the stones, centered with them */
       position: absolute;
       top: 100%;
-      right: 0;
+      left: 50%;
+      translate: -50% 0;
       margin: 0.3rem 0 0;
-      font-size: 0.68rem; line-height: 1.2; text-align: right; white-space: nowrap;
-      color: var(--muted); opacity: .65; transition: opacity .3s;
+      line-height: 1.2; text-align: center; white-space: nowrap;
+      transition: opacity .3s;
     }
+    .korok-hint { font-size: 0.68rem; color: var(--muted); opacity: .65; }
     .korok.solved .korok-hint { opacity: 0; }
     .korok-board {
       --cell: 22px;
@@ -428,17 +431,7 @@
     .fyi.open { grid-template-rows: 1fr; }
     .fyi-inner { overflow: hidden; min-height: 0; }
     .fyi.open .fyi-inner { padding-top: 2rem; }   /* room for the caption under the stones */
-    .korok-found {           /* caption centered under the 2x2 stones once solved */
-      position: absolute;
-      top: 100%;
-      left: calc(var(--cell) + var(--gap) / 2);
-      translate: -50% 0;
-      margin-top: 0.35rem;
-      font-size: 0.75rem; font-weight: 600; letter-spacing: .02em; white-space: nowrap;
-      color: var(--moss);
-      opacity: 0; pointer-events: none;
-      transition: opacity .3s;
-    }
+    .korok-found { font-size: 0.75rem; font-weight: 600; letter-spacing: .02em; color: var(--moss); opacity: 0; pointer-events: none; }
     .korok.solved .korok-found { opacity: 1; transition-delay: .35s; }
     .fyi .extras { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem 2rem; max-width: 34rem; margin: 0 auto; }   /* centered */
     .fyi .extra h4 { font-size: 0.82rem; color: var(--muted); margin: 0 0 0.3rem; }
@@ -532,7 +525,8 @@
       main { padding-top: 2.5rem; }
       html { scroll-padding-top: 7rem; }
       h2 { font-size: 2rem; }
-      .portrait { width: 7rem; margin-right: 1.25rem; }
+      .portrait { width: 7rem; }
+      .intro-top { gap: 1.25rem; }
       .entry { grid-template-columns: 1fr; }
     }
   </style>
@@ -607,12 +601,14 @@
       <section id="about">
         <h2>About</h2>
         <div class="intro">
-          <div class="portrait">
-            DH
-            <img src="images/headshot.jpg" alt="Portrait of Daniel Honrales" onerror="this.remove()">
+          <div class="intro-top">
+            <div class="portrait">
+              DH
+              <img src="images/headshot.jpg" alt="Portrait of Daniel Honrales" onerror="this.remove()">
+            </div>
+            <p class="lede">Hey! I’m Daniel, a second-year Ph.D. student in Computer Science at <a href="https://utdallas.edu/" target="_blank" rel="noopener">The University of Texas at Dallas</a>, working with <a href="https://jessekim.com/" target="_blank" rel="noopener">Dr. Jin Ryong Kim</a> in the <a href="https://mi-lab.io/" target="_blank" rel="noopener">Multimodal Interaction Lab</a>.</p>
           </div>
           <div>
-            <p class="lede">Hey! I’m Daniel, a second-year Ph.D. student in Computer Science at <a href="https://utdallas.edu/" target="_blank" rel="noopener">The University of Texas at Dallas</a>, working with <a href="https://jessekim.com/" target="_blank" rel="noopener">Dr. Jin Ryong Kim</a> in the <a href="https://mi-lab.io/" target="_blank" rel="noopener">Multimodal Interaction Lab</a>.</p>
             <p>I study human-computer interaction, building haptic interfaces and exploring multisensory perception. My work centers on thermal-tactile feedback for immersive XR, and I’m especially excited about reimagining games and live events through touch and temperature.</p>
             <p>Before my Ph.D., I earned my B.S. and M.S. in Computer Science at UTD and interned twice as a software development engineer at Amazon.</p>
             <p class="now"><span>Now</span> Moving to Virginia Tech 🦃. Stay tuned for what comes next!</p>
@@ -639,9 +635,9 @@
               <span class="slot" style="--x:1; --y:1" aria-hidden="true"></span>
               <span class="slot home" aria-hidden="true"></span>
               <button class="stone loose" type="button" aria-label="Loose stone. Drag it into the gap, or press Enter."></button>
-              <span class="korok-found" aria-hidden="true">You found me! 🍃</span>
             </div>
             <p class="korok-hint" aria-hidden="true">Something’s out of place…</p>
+            <p class="korok-found" aria-hidden="true">You found me! 🍃</p>
           </div>
         </div>
         <div class="fyi" id="fyi" aria-hidden="true">
@@ -689,34 +685,40 @@
 
         <h3>Publications</h3>
         <div class="pub">
-          <div class="title"><span class="tag">CHI 2026</span>Thermal Masking Across the Human Body: Patterns, Pathways, and Perceptual Boundaries</div>
+          <div class="tags"><span class="tag">CHI 2026</span></div>
+          <div class="title">Thermal Masking Across the Human Body: Patterns, Pathways, and Perceptual Boundaries</div>
           <div class="authors">Haokun Wang, <span class="me">Daniel Honrales</span>, Hyunjae Gil, Jin Ryong Kim</div>
           <div class="links"><a href="https://doi.org/10.1145/3772318.3791601" target="_blank" rel="noopener">Paper</a></div>
         </div>
         <div class="pub">
-          <div class="title"><span class="tag">CHI 2026 Demo</span>Demonstration of HeatFlow: A Thermal-Tactile Display for Dynamic 2D Thermal Movements</div>
+          <div class="tags"><span class="tag">CHI 2026 Demo</span></div>
+          <div class="title">Demonstration of HeatFlow: A Thermal-Tactile Display for Dynamic 2D Thermal Movements</div>
           <div class="authors"><span class="me">Daniel Honrales</span>, Yatharth Singhal, Jin Ryong Kim</div>
           <div class="links"><a href="https://doi.org/10.1145/3772363.3799169" target="_blank" rel="noopener">Paper</a></div>
         </div>
         <div class="pub">
-          <div class="title"><span class="tag">UIST 2025</span>HeatFlow: A Thermal-Tactile Display for Dynamic 2D Thermal Movements</div>
+          <div class="tags"><span class="tag">UIST 2025</span><span class="award">Best Paper Honorable Mention 🏅</span></div>
+          <div class="title">HeatFlow: A Thermal-Tactile Display for Dynamic 2D Thermal Movements</div>
           <div class="authors">Yatharth Singhal*, <span class="me">Daniel Honrales*</span>, Jin Ryong Kim &nbsp;<small>(* co-first authors)</small></div>
-          <div class="links"><span class="award">Best Paper Honorable Mention 🏅</span> <a href="https://doi.org/10.1145/3746059.3747619" target="_blank" rel="noopener">Paper</a></div>
+          <div class="links"><a href="https://doi.org/10.1145/3746059.3747619" target="_blank" rel="noopener">Paper</a></div>
         </div>
         <div class="pub">
-          <div class="title"><span class="tag">UIST 2024</span>Thermal In Motion: Designing Thermal Flow Illusions with Tactile and Thermal Interaction</div>
+          <div class="tags"><span class="tag">UIST 2024</span><span class="award">Best Demo Honorable Mention 🏅</span></div>
+          <div class="title">Thermal In Motion: Designing Thermal Flow Illusions with Tactile and Thermal Interaction</div>
           <div class="authors">Yatharth Singhal, <span class="me">Daniel Honrales</span>, Haokun Wang, Jin Ryong Kim</div>
-          <div class="links"><span class="award">Best Demo Honorable Mention 🏅</span> <a href="https://doi.org/10.1145/3654777.3676460" target="_blank" rel="noopener">Paper</a></div>
+          <div class="links"><a href="https://doi.org/10.1145/3654777.3676460" target="_blank" rel="noopener">Paper</a></div>
         </div>
         <div class="pub">
-          <div class="title"><span class="tag">ISMAR 2024</span>Wetness Illusion in Mid-Air</div>
+          <div class="tags"><span class="tag">ISMAR 2024</span></div>
+          <div class="title">Wetness Illusion in Mid-Air</div>
           <div class="authors">Yatharth Singhal, <span class="me">Daniel Honrales</span>, Hsin-Ni Ho, Jin Ryong Kim</div>
           <div class="links"><a href="https://doi.org/10.1109/ISMAR62088.2024.00100" target="_blank" rel="noopener">Paper</a></div>
         </div>
         <div class="pub">
-          <div class="title"><span class="tag">ISMAR 2024 Demo</span>Demonstration of Thermal Flow Illusions with Tactile and Thermal Interaction</div>
+          <div class="tags"><span class="tag">ISMAR 2024 Demo</span><span class="award">Best Demo Award 🏆</span></div>
+          <div class="title">Demonstration of Thermal Flow Illusions with Tactile and Thermal Interaction</div>
           <div class="authors">Yatharth Singhal, <span class="me">Daniel Honrales</span>, Haokun Wang, Jin Ryong Kim</div>
-          <div class="links"><span class="award">Best Demo Award 🏆</span> <a href="https://doi.org/10.1109/ISMAR-Adjunct64951.2024.00191" target="_blank" rel="noopener">Paper</a></div>
+          <div class="links"><a href="https://doi.org/10.1109/ISMAR-Adjunct64951.2024.00191" target="_blank" rel="noopener">Paper</a></div>
         </div>
         <p class="scholar-note">Full list on <a href="https://scholar.google.com/citations?user=rVDZzSsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
       </section>
