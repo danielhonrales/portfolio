@@ -137,7 +137,7 @@
       margin-left: var(--sidebar);
       padding: 4.5rem clamp(1.5rem, 6vw, 5.5rem) 6rem;
     }
-    .measure { max-width: 42rem; }
+    .measure { max-width: 56rem; margin: 0 auto; }   /* centered in the space beside the sidebar */
 
     section { padding-bottom: 5rem; }
     section + section { padding-top: 4rem; border-top: 1px solid var(--line); }
@@ -763,7 +763,7 @@
     </div>
   </main>
 
-  <footer>© <span id="year"></span> Daniel Honrales</footer>
+  <footer><div class="measure">© <span id="year"></span> Daniel Honrales</div></footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
